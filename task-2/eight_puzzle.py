@@ -53,13 +53,13 @@ def h3(s):
     board, _, _ = s
     res = 0
     for i in range(0, 9):
-        q, r = divmod(i, 3)  # Calculate row and column of current position
+        c, r = divmod(i, 3)  # Calculate row and column of current position
         
         if board[i] == 0:
-            qq, rr = 2, 2  # Preferred position for an empty slot
+            cc, rr = 2, 2  # Preferred position for an empty slot
         else:
-            qq, rr = divmod(board[i] - 1, 3)  # Calculate preferred row and column
+            cc, rr = divmod(board[i] - 1, 3)  # Calculate preferred row and column
         
-        res += abs(q - qq) + abs(r - rr)  # Manhattan distance
+        res += abs(c - cc) + abs(r - rr)  # Manhattan distance
         
     return res
