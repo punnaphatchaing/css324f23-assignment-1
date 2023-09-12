@@ -41,12 +41,17 @@ def uniform_cost_graph_search(problem):
             n_visits += 1
             _, node = heappop(frontier)
             state, _, _, path_cost, depth = node
-            explored.add(state)
+            # print(node , 's')
+            # print(type(state))
+            # explored.add(state)
             if problem.is_goal(state):
+                # problem.successors(state)
                 return (node, n_visits)
             else:
                 for succ, cost in problem.successors(state):
+                    print(problem.successors(state))
                     child_cost = path_cost + cost
+                    print(child_cost)
                     child = create_node(succ, node, "", child_cost,
                                         depth + 1)
                     if succ not in explored:
