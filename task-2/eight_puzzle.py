@@ -51,4 +51,15 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+    res = 0
+    for i in range(0, 9):
+        q, r = divmod(i, 3)  # Calculate row and column of current position
+        
+        if board[i] == 0:
+            qq, rr = 2, 2  # Preferred position for an empty slot
+        else:
+            qq, rr = divmod(board[i] - 1, 3)  # Calculate preferred row and column
+        
+        res += abs(q - qq) + abs(r - rr)  # Manhattan distance
+        
+    return res
